@@ -173,7 +173,50 @@ footer p{
 	width:80%;
 	/* text-align will center images as well as text */
 	text-align:center;
+
+	/* set the overflow of the slider to hidden, so any content outside its fixed  width and height will be hidden */
+	overflow: hidden;
 }
+
+/* first, make the slider position relative so it will contain all the absolutely positioned images */
+.slideback{
+	position: relative;
+}
+
+.slideback > img{
+	/* > is the direct child selector, and only targets elements that are children but not grandchildren or further descendants */
+	width: 100%;
+}
+
+.slideholder{
+	/* this is the element that slides back and forth */
+	position: absolute;
+	/* position: absolute is relative to the last element with a position property */
+	top: 0;
+
+	width: 300%; /* because there are three images */
+	height: 100%; /* only works because of display: flex */
+	display: flex; /* so the images sit next to each other */
+
+	/* add the transition property to animate any change (in this case, when the margin-left chages) */
+	transition: margin 1s ease-in-out;
+}
+
+.imgslide{
+	/* these divs hold each of the images, and we can use flex-grow to make them take up more space */
+	flex-grow: 1;
+	height: 100%;
+}
+
+.imgslide img{
+	margin-top: 26%; /* just to push the images down where we want them */
+	width: 26%;
+}
+
+/* ~ is the after selector, and will style eleents based on if they come after another element (in this casem styling the slider based on if it comes after a checked radio button) */
+#slide1:checked ~ .slideback .slideholder{ margin-left: 0; }
+#slide2:checked ~ .slideback .slideholder{ margin-left: -100%; }
+#slide3:checked ~ .slideback .slideholder{ margin-left: -200%; }
 
 
 
