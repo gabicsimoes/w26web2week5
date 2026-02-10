@@ -223,3 +223,51 @@ footer p{
 /******************************************
 		Labels (buttons)
 ******************************************/
+
+label{
+	display: inline-block;
+	/* inline-block is like images, where thay can have width and height, margin,s and padding, but can will also sit next to each other */
+
+	/* make them look like more button */
+	background-color: hsl(101, 100%, 80%);
+	/* hsl is jue, saturation, luminosity
+	hue is the colour on the wheel
+	saturation is how much colour (or how much grey)
+	luminosity is how light or dark the colour is */
+	border: 2px solid hsl(101, 100%, 30%);
+	/* using hsl for the border, and keeping the hue the same, we can get a darker version of the same green */
+	border-radius: 10px;
+	
+	width: 100px;
+	padding: 5px 0; /* two values means top-bottom, left-right */
+	font-size: 24px;
+	text-align: center;
+	margin: 0 15px;
+
+	/* change the cursor when the user is hovering */
+	cursor: pointer;
+
+	/* animate the change in background colour */
+	transition: background 0.5s, transform 0.15s;
+}
+
+label:hover{
+	background-color: hsl(101, 100%, 40%);
+}
+
+label:active{
+	background-color: hsl(101, 100%, 40%);
+	/* change the scale a little bit to make it look like the button is being pressed */
+	transform: scale(0.9);
+}
+
+/* style the labels based on which radio button is checked, so it looks like the selected button stays active */
+/* nth-of-type styles elements based on whether they are the first, second, etc, of their element type (ie, lavel, div, span, p) */
+#slide1:checked ~ label:nth-of-type(1){ background-color: hsl(101, 100%, 50%); }
+#slide2:checked ~ label:nth-of-type(2){ background-color: hsl(101, 100%, 50%); }
+#slide3:checked ~ label:nth-of-type(3){ background-color: hsl(101, 100%, 50%); }
+
+/* hide the radio buttons - select them with the attribute selector, based on the fact that they are radio buttons */
+input[type="radio"]{
+	display: none;
+}
