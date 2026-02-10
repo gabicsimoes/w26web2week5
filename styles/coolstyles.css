@@ -102,8 +102,66 @@ footer p{
 		Animations
 ******************************************/
 
+.shapes .shape1:nth-child(3){
+	/* you can animate any change in an element using the transition property */
+	transition: transform 1s ease-in-out;
+}
 
+.shapes .shape1:nth-child(3):hover{
+	/* nth-child(3) targets the third child - or specifically the thing with the class .shape1 that is a third child in .shapes */
+	transform: scale(0.2, 0.2);
+}
 
+.shapes .shape1:nth-child(2){
+	/* of you want any change to animate, use transition:all */
+	transition: all 750ms ease-in-out;
+}
+
+.shapes .shape1:nth-child(2):hover{
+	transform: rotate(135deg);
+	transform: translate(50px, 20px);
+	background-color: pink;
+}
+
+.shapes .shape1:nth-child(4){
+	/* to apply an @keyframes animation, you have to call it by name */
+	animation: jump 2s ease-in-out infinite;
+}
+
+.shapes .shape1:nth-child(5){
+	/* to apply an @keyframes animation, you have to call it by name */
+	animation: pendulum 2s ease-in-out infinite alternate;
+}
+
+/******************************************
+		Animations 2
+******************************************/
+
+/* define an animation using @keyframes */
+@keyframes jump{
+	50%{
+		transform: translateY(-100px);
+	}
+}
+
+@keyframes pendulum{
+	/* you can set a property for the duration of the animation by setting it for both 0% and 100% */
+	0%,100%{
+		transform-origin: 0 -100px;
+	}
+	/* when idealing with direction:
+	a negative vertical value means up, a positive value means down
+	a negative horizontal value means left, a positive value means right
+	if using 3D transitions: positive mean toward the viewer, negative means away */
+
+	0%{
+		transform: rotate(77deg);
+	}
+
+	100%{
+		transform: rotate(-45deg);
+	}
+}
 
 /******************************************
 		Slider
